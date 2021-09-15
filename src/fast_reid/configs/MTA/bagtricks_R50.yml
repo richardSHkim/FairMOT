@@ -1,0 +1,7 @@
+_BASE_: ../Base-bagtricks.yml
+
+DATASETS:
+  NAMES: ("MTA",)
+  TESTS: ("MTA",)
+
+OUTPUT_DIR: logs/mta/bagtricks_R50

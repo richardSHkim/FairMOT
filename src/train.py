@@ -68,6 +68,7 @@ def main(opt):
         mark = epoch if opt.save_all else 'last'
         log_dict_train, _ = trainer.train(epoch, train_loader)
         logger.write('epoch: {} |'.format(epoch))
+        
         for k, v in log_dict_train.items():
             logger.scalar_summary('train_{}'.format(k), v, epoch)
             logger.write('{} {:8f} | '.format(k, v))
@@ -93,6 +94,6 @@ def main(opt):
 
 
 if __name__ == '__main__':
-    torch.cuda.set_device(2)
+    # torch.cuda.set_device(2)
     opt = opts().parse()
     main(opt)

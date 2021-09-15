@@ -21,7 +21,7 @@ class BaseTrack(object):
     curr_feature = None
     score = 0
     start_frame = 0
-    frame_id = 0
+    # frame_id = 0
     time_since_update = 0
 
     # multi-camera

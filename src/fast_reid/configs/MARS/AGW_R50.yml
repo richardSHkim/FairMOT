@@ -1,0 +1,7 @@
+_BASE_: ../Base-AGW.yml
+
+DATASETS:
+  NAMES: ("MARS",)
+  TESTS: ("MARS",)
+
+OUTPUT_DIR: logs/mars/agw_R50

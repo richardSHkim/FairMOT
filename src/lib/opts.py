@@ -25,7 +25,7 @@ class opts(object):
                                   'in the exp dir if load_model is empty.') 
 
     # system
-    self.parser.add_argument('--gpus', default='2, 3',
+    self.parser.add_argument('--gpus', default='0',
                              help='-1 for CPU, use comma for multiple gpus')
     self.parser.add_argument('--num_workers', type=int, default=8,
                              help='dataloader threads. 0 for single-thread.')
@@ -115,16 +115,20 @@ class opts(object):
     self.parser.add_argument('--track_buffer', type=int, default=30, help='tracking buffer')
     self.parser.add_argument('--min-box-area', type=float, default=100, help='filter out tiny boxes')
     self.parser.add_argument('--input-video', type=str,
-                             default='../videos/MOT16-03.mp4',
+                             default='/workspace/data/MTA/MTA_ext_short/test/cam_1/cam_1.mp4',
+                             help='path to the input video')
+    self.parser.add_argument('--input-videos-dir', type=str,
+                             default='/workspace/data/MTA/MTA_ext_short/test/all',
                              help='path to the input video')
     self.parser.add_argument('--output-format', type=str, default='video', help='video or text')
     self.parser.add_argument('--output-root', type=str, default='../demos', help='expected output root path')
+    self.parser.add_argument('--output-name', type=str, default='MOT16-03-results.mp4')
 
     # mot
     self.parser.add_argument('--data_cfg', type=str,
                              default='../src/lib/cfg/data.json',
                              help='load data from cfg')
-    self.parser.add_argument('--data_dir', type=str, default='/home/zyf/dataset')
+    self.parser.add_argument('--data_dir', type=str, default='/workspace/data')
 
     # loss
     self.parser.add_argument('--mse_loss', action='store_true',
@@ -158,6 +162,26 @@ class opts(object):
                              help='category specific bounding box size.')
     self.parser.add_argument('--not_reg_offset', action='store_true',
                              help='not regress local offset.')
+    # reid
+    self.parser.add_argument(
+        "--config-file",
+        default='fast_reid/configs/MTA/AGW_R50.yml',
+        metavar="FILE",
+        help="path to config file",
+    )
+    self.parser.add_argument(
+        "--query",
+        default='q_img.jpg',
+        help="A list of space separated input images; "
+            "or a single glob pattern such as 'directory/*.jpg'",
+    )
+    self.parser.add_argument(
+        "--opts",
+        help="Modify config options using the command-line 'KEY VALUE' pairs",
+        default=[],
+        nargs=argparse.REMAINDER,
+    )
+
 
   def parse(self, args=''):
     if args == '':

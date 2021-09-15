@@ -1,0 +1,13 @@
+_BASE_: ../Base-AGW.yml
+
+DATASETS:
+  NAMES: ("DukeMTMC",)
+  TESTS: ("DukeMTMC",)
+  CAMSTYLE: True
+
+MODEL:
+  LOSSES:
+    CE:
+      CAMSTYLE_SCALE: 0.5
+
+OUTPUT_DIR: logs/dukemtmc/agw_R50_camstyle_scale

@@ -1,0 +1,7 @@
+_BASE_: ../Base-bagtricks.yml
+
+DATASETS:
+  NAMES: ("MARS",)
+  TESTS: ("MARS",)
+
+OUTPUT_DIR: logs/mars/bagtricks_R50

@@ -1,6 +1,7 @@
 import os.path as osp
 import os
 import numpy as np
+import tqdm
 
 
 def mkdirs(d):
@@ -8,14 +9,14 @@ def mkdirs(d):
         os.makedirs(d)
 
 
-seq_root = '/data/yfzhang/MOT/JDE/MOT20/images/train'
-label_root = '/data/yfzhang/MOT/JDE/MOT20/labels_with_ids/train'
+seq_root = '/workspace/data/MOT20/images/train'
+label_root = '/workspace/data/MOT20/labels_with_ids/train'
 mkdirs(label_root)
 seqs = [s for s in os.listdir(seq_root)]
 
 tid_curr = 0
 tid_last = -1
-for seq in seqs:
+for seq in tqdm.tqdm(seqs):
     seq_info = open(osp.join(seq_root, seq, 'seqinfo.ini')).read()
     seq_width = int(seq_info[seq_info.find('imWidth=') + 8:seq_info.find('\nimHeight')])
     seq_height = int(seq_info[seq_info.find('imHeight=') + 9:seq_info.find('\nimExt')])

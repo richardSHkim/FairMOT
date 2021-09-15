@@ -1,0 +1,8 @@
+yacs
+cython
+tensorboard
+gdown
+scikit-learn
+termcolor
+tabulate
+faiss-cpu
